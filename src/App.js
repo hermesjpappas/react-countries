@@ -5,7 +5,7 @@ import Country from './components/Country'
 
 function App() {
   return (
-    <div className='font-sans bg-gray-300 h-screen w-screen'>
+    <div className='h-screen w-screen flex flex-col items-center font-sans bg-gray-300 '>
     <Header/>
     <div>
       {/* container for Country component grid */}
