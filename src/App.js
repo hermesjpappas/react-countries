@@ -5,7 +5,7 @@ import Country from './components/Country'
 
 function App() {
   return (
-    <div className='font-sans'>
+    <div className='font-sans bg-gray-300 h-screen w-screen'>
     <Header/>
     <div>
       {/* container for Country component grid */}
