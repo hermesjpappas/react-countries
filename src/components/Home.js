@@ -14,8 +14,7 @@ export default function Home(props) {
   });
 
   return (
-    <div className="flex flex-col items-center">
-      {/*searchbar and dropdown*/}
+    <div className="flex flex-col">
       <div className='w-full flex justify-between p-2'>
         <div className="relative">
         <FontAwesomeIcon icon={faSearch} className="text-gray-400 absolute top-2 left-1 pb-1"/>
@@ -34,7 +33,7 @@ export default function Home(props) {
           <option value='oceania'>Oceania</option>
         </select>
       </div>
-      <div className="p-2 flex flex-wrap lg:justify-center gap-6">
+      <div className="p-2 flex flex-wrap gap-6 justify-center">
 
         {props.countries.map(country => {
           return (
