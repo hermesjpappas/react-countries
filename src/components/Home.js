@@ -21,14 +21,14 @@ export default function Home({countries, handleChange}) {
         <div className="relative">
         <FontAwesomeIcon icon={faSearch} className="text-gray-400 absolute top-2 left-1 pb-1 sm:text-xl sm:top-3 sm:left-3"/>
           <input
-            className='text-sm p-1 pl-6 rounded w-44 shadow-lg sm:h-10 sm:w-96 sm:text-base sm:pl-10 focus:outline-none'
+            className='bg-white text-gray-700 text-sm p-1 pl-6 rounded w-44 shadow-lg sm:h-10 sm:w-96 sm:text-base sm:pl-10 focus:outline-none'
             type='text'
             placeholder='search country'
             name='searchTerm'
             onChange={handleChange}
           />
         </div>
-        <select name="regionSelection" onChange={handleChange} className='text-xs rounded bg-white shadow-lg px-1 sm:w-28 sm:text-center sm:text-base focus:outline-none'>
+        <select name="regionSelection" onChange={handleChange} className='text-xs rounded bg-white text-gray-700 shadow-lg px-1 sm:w-28 sm:text-center sm:text-base focus:outline-none'>
           <option value='none'>[Region]</option>
           <option value='africa'>Africa</option>
           <option value='americas'>Americas</option>
