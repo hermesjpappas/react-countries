@@ -7,7 +7,7 @@ export default function Country({country}) {
       <img className='w-full h-1/2 rounded-t-md' src={country.flags.png} />
       <div className="h-1/2 p-4 text-sm flex flex-col justify-center text-gray-700">
         <p className="text-xl font-bold pb-4">{country.name.common}</p>
-        <p><span className="font-bold">Population:</span> {country.population}</p>
+        <p><span className="font-bold">Population:</span> {country.population.toLocaleString()}</p>
         <p><span className="font-bold">Region:</span> {country.region}</p>
         <p><span className="font-bold">{country.capital && country.capital.length > 1 ? "Capitals" : "Capital"}: </span> 
         {country.capital ? country.capital.join(", ") : "None"}</p>
