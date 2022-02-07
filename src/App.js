@@ -8,12 +8,19 @@ function App() {
 
 
   const [allCountries, setAllCountries] = useState([]);
+  const [selectedCountries, setSelectedCountries] = useState([])
+  const [terms, setTerms] = useState({
+    searchTerm: "",
+    regionSelection: ""
+  });
 
   useEffect(() => {
-    console.log("Running useEffect");
    fetch("https://restcountries.com/v3.1/all")
       .then(response => response.json())
-      .then(data => setAllCountries(data))
+      .then(data => {
+        setAllCountries(data);
+        setSelectedCountries(data);
+      })
       .catch(err => console.log(err));
   }, []);
 
@@ -23,13 +30,37 @@ function App() {
     return lowerStr.startsWith(lowerSearch); 
   }
 
-  
+  function handleChange(e) {
+    const {name, value} = e.target;
+    setTerms(prevTerms => {
+      return {
+        ...prevTerms,
+        [name]: value
+      }
+    });
+  }
+
+  useEffect(() => {
+    if(terms.regionSelection ==="none") {
+      
+      setSelectedCountries(allCountries);
+    }
+    else {
+        setSelectedCountries(allCountries.filter(country => country.region.toLowerCase() === terms.regionSelection.toLowerCase()));
+    }
+
+    console.log(terms);
+
+  }, [terms]);
+
+    
+ 
 
 
   return (
     <div className='flex flex-col items-center bg-gray-300 font-jost'>
     <Header/>
-    <Home countries={allCountries}/>
+    <Home countries={selectedCountries} handleChange={handleChange}/>
     </div>
   );
 }
