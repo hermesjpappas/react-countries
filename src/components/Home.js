@@ -37,7 +37,7 @@ export default function Home({countries, handleChange}) {
           <option value='oceania'>Oceania</option>
         </select>
       </div>
-      <div className="p-2 flex flex-wrap gap-6 justify-center text-5xl text-gray-500">
+      <div className="p-2 flex flex-wrap gap-6 justify-center text-xl md:text-3xl lg:text-6xl text-gray-400">
 
         {countries.length >= 1 ? 
         countries.map(country => {
