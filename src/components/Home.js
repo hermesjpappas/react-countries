@@ -14,7 +14,7 @@ export default function Home(props) {
   });
 
   return (
-    <div className="flex flex-col">
+    <div className="w-full flex flex-col items-center">
       <div className='w-full flex justify-between p-2'>
         <div className="relative">
         <FontAwesomeIcon icon={faSearch} className="text-gray-400 absolute top-2 left-1 pb-1"/>
@@ -37,7 +37,7 @@ export default function Home(props) {
 
         {props.countries.map(country => {
           return (
-            <Country country={country}/>
+            <Country key={country.cca3} country={country}/>
           )
         })}
 

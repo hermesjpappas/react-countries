@@ -9,7 +9,7 @@ export default function Country({country}) {
         <p className="text-xl font-bold pb-4">{country.name.common}</p>
         <p><span className="font-bold">Population:</span> {country.population}</p>
         <p><span className="font-bold">Region:</span> {country.region}</p>
-        <p><span className="font-bold">Capital:</span> {country.capital[0]}</p>
+        <p><span className="font-bold">Capital:</span> {country.capital ? country.capital : "None"}</p>
       </div>
     </div>
   );
