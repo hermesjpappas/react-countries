@@ -48,7 +48,7 @@ function App() {
         prevCountries.filter((country) =>
           country.name.common
             .toLowerCase()
-            .startsWith(terms.searchTerm.toLowerCase())
+            .startsWith(terms.searchTerm.toLowerCase().trim())
         )
       );
     }
