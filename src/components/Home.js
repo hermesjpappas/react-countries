@@ -29,7 +29,7 @@ export default function Home({countries, handleChange}) {
           />
         </div>
         <select name="regionSelection" onChange={handleChange} className='text-xs rounded bg-white shadow-lg px-1 sm:w-28 sm:text-center sm:text-base'>
-          <option value='none'>Region</option>
+          <option value='none'>[Region]</option>
           <option value='africa'>Africa</option>
           <option value='americas'>Americas</option>
           <option value='asia'>Asia</option>
