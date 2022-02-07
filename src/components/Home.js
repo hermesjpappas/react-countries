@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import Country from "./Country";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-export default function Home(props) {
+export default function Home({countries}) {
+
 
   //sort the countries by name
-  props.countries.sort((a,b) => {
+    countries.sort((a,b) => {
     let nameA = a.name.common.toUpperCase();
     let nameB = b.name.common.toUpperCase();
 
@@ -35,7 +36,7 @@ export default function Home(props) {
       </div>
       <div className="p-2 flex flex-wrap gap-6 justify-center">
 
-        {props.countries.map(country => {
+        {countries.map(country => {
           return (
             <Country key={country.cca3} country={country}/>
           )

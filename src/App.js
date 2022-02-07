@@ -17,6 +17,15 @@ function App() {
       .catch(err => console.log(err));
   }, []);
 
+  function checkStart(search, str) {
+    const lowerSearch = search.toLowerCase();
+    const lowerStr = str.toLowerCase();
+    return lowerStr.startsWith(lowerSearch); 
+  }
+
+  
+
+
   return (
     <div className='flex flex-col items-center bg-gray-300 font-jost'>
     <Header/>
