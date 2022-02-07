@@ -8,7 +8,7 @@ export default function Header() {
   {/* change above to flex justify-between when/if you put a dark mode button */}
     <div className="flex items-center justify-start gap-3">
       <FontAwesomeIcon icon={faGlobe} className="text-xl"/>
-      <p className="pt-1">Around The World</p>
+      <p className="pt-1 font-bold">Around The World</p>
     </div>
   </div>;
 }

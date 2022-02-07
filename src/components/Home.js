@@ -16,7 +16,7 @@ export default function Home() {
             placeholder='search country'
           />
         </div>
-        <select className='text-xs rounded bg-white shadow-md'>
+        <select className='text-xs rounded bg-white shadow-md px-1'>
           <option value=''>Region</option>
           <option value='africa'>Africa</option>
           <option value='americas'>Americas</option>
@@ -25,7 +25,8 @@ export default function Home() {
           <option value='oceania'>Oceania</option>
         </select>
       </div>
-      <div>
+      <div className="p-2 w-screen flex flex-wrap gap-6">
+        <Country />
         <Country />
         {/* map data to country components*/}
       </div>
