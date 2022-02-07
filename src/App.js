@@ -1,6 +1,7 @@
 import React from "react";
 import Header from './components/Header'
-import Country from './components/Country'
+import Home from './components/Home';
+
 
 
 function App() {

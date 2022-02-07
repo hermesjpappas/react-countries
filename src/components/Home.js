@@ -1,7 +1,7 @@
 import React from 'react';
 import Country from './Country';
 
-function Home() {
+export default function Home() {
   return <div>
     {/*searchbar and dropdown*/}
     <Country />

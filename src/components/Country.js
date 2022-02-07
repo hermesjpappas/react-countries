@@ -1,7 +1,5 @@
 import React from 'react';
 
-function Country() {
+export default function Country() {
   return <div></div>;
 }
-
-export default Country;
