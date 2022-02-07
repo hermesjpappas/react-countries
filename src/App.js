@@ -21,12 +21,6 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  function checkStart(search, str) {
-    const lowerSearch = search.toLowerCase();
-    const lowerStr = str.toLowerCase();
-    return lowerStr.startsWith(lowerSearch);
-  }
-
   function handleChange(e) {
     const { name, value } = e.target;
     setTerms((prevTerms) => {
