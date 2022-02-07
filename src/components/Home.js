@@ -3,11 +3,20 @@ import Country from "./Country";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-export default function Home() {
+export default function Home(props) {
+
+  //sort the countries by name
+  props.countries.sort((a,b) => {
+    let nameA = a.name.common.toUpperCase();
+    let nameB = b.name.common.toUpperCase();
+
+    return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
+  });
+
   return (
-    <div>
+    <div className="flex flex-col items-center">
       {/*searchbar and dropdown*/}
-      <div className='w-screen flex justify-between p-2'>
+      <div className='w-full flex justify-between p-2'>
         <div className="relative">
         <FontAwesomeIcon icon={faSearch} className="text-gray-400 absolute top-2 left-1 pb-1"/>
           <input
@@ -25,10 +34,14 @@ export default function Home() {
           <option value='oceania'>Oceania</option>
         </select>
       </div>
-      <div className="p-2 w-screen flex flex-wrap gap-6">
-        <Country />
-        <Country />
-        {/* map data to country components*/}
+      <div className="p-2 flex flex-wrap lg:justify-center gap-6">
+
+        {props.countries.map(country => {
+          return (
+            <Country country={country}/>
+          )
+        })}
+
       </div>
     </div>
   );

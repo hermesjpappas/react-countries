@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Header from './components/Header'
 import Home from './components/Home';
-
+import europe from './tests/europe';
 
 
 function App() {
+
+  const [allCountries, setAllCountries] = useState(europe);
+
   return (
-    <div className='h-screen w-screen flex flex-col items-center bg-gray-300 font-jost'>
+    <div className='flex flex-col items-center bg-gray-300 font-jost'>
     <Header/>
-    <Home />
+    <Home countries={allCountries}/>
     </div>
   );
 }
