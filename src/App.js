@@ -8,7 +8,7 @@ function App() {
   const [selectedCountries, setSelectedCountries] = useState([]);
   const [terms, setTerms] = useState({
     searchTerm: "",
-    regionSelection: "",
+    regionSelection: "none",
   });
 
   useEffect(() => {
@@ -32,8 +32,9 @@ function App() {
   }
 
   useEffect(() => {
-    if (terms.regionSelection === "none") setSelectedCountries(allCountries);
-    else {
+    if (terms.regionSelection === "none") {
+      setSelectedCountries(allCountries);
+    } else {
       setSelectedCountries(
         allCountries.filter(
           (country) =>
@@ -42,7 +43,7 @@ function App() {
       );
     }
 
-    if (terms.searchTerm) {
+    if(terms.searchTerm) {
       setSelectedCountries((prevCountries) =>
         prevCountries.filter((country) =>
           country.name.common
