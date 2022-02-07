@@ -60,7 +60,7 @@ function App() {
   }, [terms]);
 
   return (
-    <div className='flex flex-col items-center bg-gray-300 font-jost'>
+    <div className='flex flex-col items-center bg-gray-300 min-h-screen font-jost'>
       <Header />
       <Home countries={selectedCountries} handleChange={handleChange} />
     </div>
