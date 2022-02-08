@@ -14,7 +14,7 @@ export default function Details({ countries }) {
     nativeNames = nativeName[mainLanguage];
   }
  
-  let currencyList = "none";
+  let currencyList = ["none"];
 
   if(country.currencies) {
     const currencyKeys = Object.keys(country.currencies);
@@ -23,6 +23,16 @@ export default function Details({ countries }) {
       return `${currencies[key]["name"]} (${currencies[key]["symbol"]})`;
     });
   }
+
+  let languageList = ["none"];
+
+  if(country.languages) {
+    const languageKeys = Object.keys(country.languages); 
+    languageList = languageKeys.map(key => {
+      return `${country.languages[key]}`;
+    });
+  }
+
 
 
   return (
@@ -47,7 +57,7 @@ export default function Details({ countries }) {
             `Endonym: ${nativeNames.common}`}
         </p>
 
-        <div className='flex flex-col items-start text-sm'>
+        <div className='flex flex-col items-start text-sm gap-3'>
           <p>
             <span className='font-bold'>Official Name: </span>
             {country.name.official}
@@ -99,7 +109,11 @@ export default function Details({ countries }) {
           </p>
           <p>
             <span className='font-bold'>Currencies: </span>
-            {currencyList}
+            {currencyList.join(", ")}
+          </p>
+          <p>
+            <span className='font-bold'>Languages: </span>
+            {languageList.join(", ")}
           </p>
         </div>
       </div>
