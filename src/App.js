@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
-import europe from "./tests/europe";
 
 function App() {
   const [allCountries, setAllCountries] = useState([]);
@@ -57,7 +57,10 @@ function App() {
   return (
     <div className='flex flex-col items-center bg-gray-300 min-h-screen font-jost'>
       <Header />
-      <Home countries={selectedCountries} handleChange={handleChange} />
+      <Routes>
+        <Route path="/" element={<Home countries={selectedCountries} handleChange={handleChange}/>} />
+        {/* set up path for each detail page later */} 
+      </Routes>
     </div>
   );
 }
