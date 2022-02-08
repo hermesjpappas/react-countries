@@ -92,7 +92,7 @@ export default function Details({ countries }) {
           </p>
           <p>
             <span className='font-bold'>Sub-Region: </span>
-            {country.subregion}
+            {country.subregion ? country.subregion : "None"}
           </p>
           <p>
             <span className='font-bold'>
