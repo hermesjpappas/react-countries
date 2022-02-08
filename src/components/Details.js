@@ -6,34 +6,32 @@ export default function Details({ countries }) {
 
   const country = countries.find((country) => country.cca3 === countryCode);
 
-  let nativeNames = {common: "none", official: "none"};
- 
-  if(country.name.nativeName) {
+  let nativeNames = { common: "none", official: "none" };
+
+  if (country.name.nativeName) {
     const mainLanguage = Object.keys(country.languages)[0];
     const nativeName = country.name.nativeName;
     nativeNames = nativeName[mainLanguage];
   }
- 
+
   let currencyList = ["none"];
 
-  if(country.currencies) {
+  if (country.currencies) {
     const currencyKeys = Object.keys(country.currencies);
     const currencies = country.currencies;
-    currencyList = currencyKeys.map(key => {
+    currencyList = currencyKeys.map((key) => {
       return `${currencies[key]["name"]} (${currencies[key]["symbol"]})`;
     });
   }
 
   let languageList = ["none"];
 
-  if(country.languages) {
-    const languageKeys = Object.keys(country.languages); 
-    languageList = languageKeys.map(key => {
+  if (country.languages) {
+    const languageKeys = Object.keys(country.languages);
+    languageList = languageKeys.map((key) => {
       return `${country.languages[key]}`;
     });
   }
-
-
 
   return (
     <React.Fragment>
@@ -45,10 +43,18 @@ export default function Details({ countries }) {
         </div>
       </Link>
       <div className='flex flex-col items-center p-5 gap-4 text-gray-800'>
-        <img
-          className='rounded-md shadow-md shadow-gray-700'
-          src={country.flags.png}
-        />
+        <div className='flex flex-wrap gap-6 justify-center'>
+          <a href={country.flags.svg} target='_blank'>
+            <img
+              className='rounded-md shadow-md shadow-gray-700 max-h-40'
+              src={country.flags.png}
+            />
+          </a>
+          <a href={country.coatOfArms.svg} target="_blank">
+            <img className='max-h-40 mb-6' src={country.coatOfArms.png} />
+          </a>
+        </div>
+
         <p className='font-bold text-4xl'>{country.name.common}</p>
 
         <p className='font-bold text-xl'>
