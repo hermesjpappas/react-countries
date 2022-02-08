@@ -8,6 +8,9 @@ export default function Details({ countries }) {
   //use the country code to get the right object to display from state
   const country = countries.find((country) => country.cca3 === countryCode);
 
+  //get the bordering countries
+  const borderingCountries = country.borders;
+
   //basically all these conditionals are because Antarctica
   //doesn't have some of these values
 
@@ -55,7 +58,7 @@ export default function Details({ countries }) {
               src={country.flags.png}
             />
           </a>
-          <a href={country.coatOfArms.svg} target="_blank">
+          <a href={country.coatOfArms.svg} target='_blank'>
             <img className='max-h-40 mb-6' src={country.coatOfArms.png} />
           </a>
         </div>
@@ -103,7 +106,7 @@ export default function Details({ countries }) {
             {country.capital ? country.capital.join(", ") : "None"}
           </p>
           <p>
-            <span className="font-bold">Landlocked: </span>
+            <span className='font-bold'>Landlocked: </span>
             {country.landlocked ? "Yes" : "No"}
           </p>
           <p>
@@ -130,6 +133,21 @@ export default function Details({ countries }) {
             <span className='font-bold'>Languages: </span>
             {languageList.join(", ")}
           </p>
+          <p className='font-bold mt-6 self-center'>Borders with: </p>
+        </div>
+        <div className="flex flex-wrap justify-center gap-4">
+          {borderingCountries ? 
+            borderingCountries.map(code => {
+              const linkCountry = countries.find(country => country.cca3 === code);
+              console.log(linkCountry);
+              return (
+                <Link key={code} to={"/" + code} className="flex flex-col items-center gap-2">
+                 <img src={linkCountry.flags.png} className="max-h-20 rounded-md"/>
+                  <p className="font-bold">{linkCountry.name.common}</p>
+                </Link>
+              )
+            }) : "None"
+          }
         </div>
       </div>
     </React.Fragment>
