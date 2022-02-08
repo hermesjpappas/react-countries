@@ -6,11 +6,10 @@ export default function Details({ countries }) {
 
   const country = countries.find((country) => country.cca3 === countryCode);
 
+  
   const mainLanguage = Object.keys(country.languages)[0];
   const nativeName = country.name.nativeName;
   const nativeNames = nativeName[mainLanguage];
-
-
 
   return (
     <React.Fragment>
@@ -28,11 +27,10 @@ export default function Details({ countries }) {
         />
         <p className='font-bold text-4xl'>{country.name.common}</p>
 
-  
-        <p className='font-bold text-xl'>{
-          country.name.common !== nativeNames.common &&
-          `Endonym: ${nativeNames.common}`
-          }</p>
+        <p className='font-bold text-xl'>
+          {country.name.common !== nativeNames.common &&
+            `Endonym: ${nativeNames.common}`}
+        </p>
 
         <div className='flex flex-col items-start text-sm'>
           <p>
@@ -40,8 +38,15 @@ export default function Details({ countries }) {
             {country.name.official}
           </p>
           <p>
-            <span className='font-bold'>Official Endonym: </span>
-            {nativeNames.official}
+            <span className='font-bold'>
+              {country.name.official !== nativeNames.official
+                ? "Official Endonym: "
+                : ""}
+            </span>
+            {
+              country.name.official !== nativeNames.official ?
+              nativeNames.official :
+              ""}
           </p>
           <p>
             <span className='font-bold'>Region: </span>
