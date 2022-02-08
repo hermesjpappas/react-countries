@@ -63,15 +63,15 @@ export default function Details({ countries }) {
           </a>
         </div>
 
-        <p className='font-bold text-4xl'>{country.name.common}</p>
+        <p className='font-bold text-4xl lg:text-5xl'>{country.name.common}</p>
 
-        <p className='font-bold text-xl'>
+        <p className='font-bold text-xl lg:text-2xl'>
           {country.name.nativeName &&
             country.name.common !== nativeNames.common &&
             `Endonym: ${nativeNames.common}`}
         </p>
 
-        <div className='flex flex-col items-start text-sm gap-3'>
+        <div className='flex flex-col items-start text-sm gap-3 sm:text-base md:text-lg lg:text-xl'>
           <p>
             <span className='font-bold'>Official Name: </span>
             {country.name.official}
@@ -135,7 +135,7 @@ export default function Details({ countries }) {
           </p>
           <p className='font-bold mt-6 self-center'>Borders with: </p>
         </div>
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-4 w-40 sm:w-full">
           {borderingCountries ? 
             borderingCountries.map(code => {
               const linkCountry = countries.find(country => country.cca3 === code);
