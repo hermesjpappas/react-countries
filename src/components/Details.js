@@ -2,9 +2,14 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 
 export default function Details({ countries }) {
+  //get the country code from the URL
   const { countryCode } = useParams();
 
+  //use the country code to get the right object to display from state
   const country = countries.find((country) => country.cca3 === countryCode);
+
+  //basically all these conditionals are because Antarctica
+  //doesn't have some of these values
 
   let nativeNames = { common: "none", official: "none" };
 
