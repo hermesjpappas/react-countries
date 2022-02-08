@@ -9,7 +9,7 @@ function App() {
   const [selectedCountries, setSelectedCountries] = useState([]);
   const [terms, setTerms] = useState({
     searchTerm: "",
-    regionSelection: "none",
+    regionSelection: "all",
   });
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function App() {
   }
 
   useEffect(() => {
-    if (terms.regionSelection === "none") {
+    if (terms.regionSelection === "all") {
       setSelectedCountries(allCountries);
     } else {
       setSelectedCountries(
