@@ -60,7 +60,7 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<Home countries={selectedCountries} handleChange={handleChange} terms={terms}/>} />
-        <Route path="/:countryCode" element={<Details countries={selectedCountries}/>} />
+        <Route path="/:countryCode" element={<Details countries={allCountries}/>} />
         {/* set up path for each detail page later */} 
       </Routes>
     </div>

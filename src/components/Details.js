@@ -8,8 +8,6 @@ export default function Details({ countries }) {
   //use the country code to get the right object to display from state
   const country = countries.find((country) => country.cca3 === countryCode);
 
-  //get the bordering countries
-  const borderingCountries = country.borders;
 
   //basically all these conditionals are because Antarctica
   //doesn't have some of these values
@@ -136,8 +134,8 @@ export default function Details({ countries }) {
           <p className='font-bold mt-6 self-center'>Borders with: </p>
         </div>
         <div className="flex flex-wrap justify-center gap-4 w-40 sm:w-full">
-          {borderingCountries ? 
-            borderingCountries.map(code => {
+          {country.borders ? 
+            country.borders.map(code => {
               const linkCountry = countries.find(country => country.cca3 === code);
               return (
                 <Link key={code} to={"/" + code} className="flex flex-col items-center gap-2">
