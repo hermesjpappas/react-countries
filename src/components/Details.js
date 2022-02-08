@@ -103,6 +103,10 @@ export default function Details({ countries }) {
             {country.capital ? country.capital.join(", ") : "None"}
           </p>
           <p>
+            <span className="font-bold">Landlocked: </span>
+            {country.landlocked ? "Yes" : "No"}
+          </p>
+          <p>
             <span className='font-bold'>Population: </span>
             {country.population.toLocaleString()}
           </p>
