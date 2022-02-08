@@ -9,12 +9,21 @@ export default function Details({ countries }) {
   let nativeNames = {common: "none", official: "none"};
  
   if(country.name.nativeName) {
-    console.log("I have a native name");
     const mainLanguage = Object.keys(country.languages)[0];
     const nativeName = country.name.nativeName;
     nativeNames = nativeName[mainLanguage];
   }
  
+  let currencyList = "none";
+
+  if(country.currencies) {
+    const currencyKeys = Object.keys(country.currencies);
+    const currencies = country.currencies;
+    currencyList = currencyKeys.map(key => {
+      return `${currencies[key]["name"]} (${currencies[key]["symbol"]})`;
+    });
+  }
+
 
   return (
     <React.Fragment>
@@ -28,7 +37,7 @@ export default function Details({ countries }) {
       <div className='flex flex-col items-center p-5 gap-4 text-gray-800'>
         <img
           className='rounded-md shadow-md shadow-gray-700'
-          src={country.flags.svg}
+          src={country.flags.png}
         />
         <p className='font-bold text-4xl'>{country.name.common}</p>
 
@@ -87,6 +96,10 @@ export default function Details({ countries }) {
           <p>
             <span className='font-bold'>UN Member: </span>
             {country.unMember ? "Yes" : "No"}
+          </p>
+          <p>
+            <span className='font-bold'>Currencies: </span>
+            {currencyList}
           </p>
         </div>
       </div>
