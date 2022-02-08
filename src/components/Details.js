@@ -6,10 +6,15 @@ export default function Details({ countries }) {
 
   const country = countries.find((country) => country.cca3 === countryCode);
 
-  
-  const mainLanguage = Object.keys(country.languages)[0];
-  const nativeName = country.name.nativeName;
-  const nativeNames = nativeName[mainLanguage];
+  let nativeNames = {common: "none", official: "none"};
+ 
+  if(country.name.nativeName) {
+    console.log("I have a native name");
+    const mainLanguage = Object.keys(country.languages)[0];
+    const nativeName = country.name.nativeName;
+    nativeNames = nativeName[mainLanguage];
+  }
+ 
 
   return (
     <React.Fragment>
@@ -28,7 +33,8 @@ export default function Details({ countries }) {
         <p className='font-bold text-4xl'>{country.name.common}</p>
 
         <p className='font-bold text-xl'>
-          {country.name.common !== nativeNames.common &&
+          {country.name.nativeName &&
+            country.name.common !== nativeNames.common &&
             `Endonym: ${nativeNames.common}`}
         </p>
 
@@ -39,14 +45,15 @@ export default function Details({ countries }) {
           </p>
           <p>
             <span className='font-bold'>
-              {country.name.official !== nativeNames.official
+              {country.name.nativeName &&
+              country.name.official !== nativeNames.official
                 ? "Official Endonym: "
                 : ""}
             </span>
-            {
-              country.name.official !== nativeNames.official ?
-              nativeNames.official :
-              ""}
+            {country.name.nativeName &&
+            country.name.official !== nativeNames.official
+              ? nativeNames.official
+              : ""}
           </p>
           <p>
             <span className='font-bold'>Region: </span>
