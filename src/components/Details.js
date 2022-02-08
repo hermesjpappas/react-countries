@@ -139,7 +139,6 @@ export default function Details({ countries }) {
           {borderingCountries ? 
             borderingCountries.map(code => {
               const linkCountry = countries.find(country => country.cca3 === code);
-              console.log(linkCountry);
               return (
                 <Link key={code} to={"/" + code} className="flex flex-col items-center gap-2">
                  <img src={linkCountry.flags.png} className="max-h-20 rounded-md"/>
