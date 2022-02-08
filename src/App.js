@@ -59,7 +59,7 @@ function App() {
     <div className='flex flex-col items-center bg-gray-300 min-h-screen font-jost'>
       <Header />
       <Routes>
-        <Route exact path="/" element={<Home countries={selectedCountries} handleChange={handleChange}/>} />
+        <Route exact path="/" element={<Home countries={selectedCountries} handleChange={handleChange} terms={terms}/>} />
         <Route path="/:countryCode" element={<Details countries={selectedCountries}/>} />
         {/* set up path for each detail page later */} 
       </Routes>

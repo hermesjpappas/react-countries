@@ -3,7 +3,7 @@ import Country from "./Country";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-export default function Home({countries, handleChange}) {
+export default function Home({countries, handleChange, terms}) {
 
 
   //sort the countries by name
@@ -25,10 +25,11 @@ export default function Home({countries, handleChange}) {
             type='text'
             placeholder='search country'
             name='searchTerm'
+            value={terms.searchTerm}
             onChange={handleChange}
           />
         </div>
-        <select name="regionSelection" onChange={handleChange} className='text-xs rounded bg-white text-gray-700 shadow-lg px-1 sm:w-28 sm:text-center sm:text-base focus:outline-none'>
+        <select name="regionSelection" value={terms.regionSelection} onChange={handleChange} className='text-xs rounded bg-white text-gray-700 shadow-lg px-1 sm:w-28 sm:text-center sm:text-base focus:outline-none'>
           <option value='none'>All Regions</option>
           <option value='africa'>Africa</option>
           <option value='americas'>Americas</option>
