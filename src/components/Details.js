@@ -1,8 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactImageFallback from "react-image-fallback";
+import Popup from './Popup';
+
+
+
 
 export default function Details({ countries }) {
+
+
+  const [flagPopup, setFlagPopup] = useState(false);
+  const [coaPopup, setCoaPopup] = useState(false);
+
+  function toggleFlag() {
+    setFlagPopup(prevStatus => !prevStatus);
+  }
+
+  function toggleCoa() {
+    setCoaPopup(prevStatus => !prevStatus);
+  }
+
   //get the country code from the URL
   const { countryCode } = useParams();
 
@@ -41,6 +58,8 @@ export default function Details({ countries }) {
 
   return (
     <React.Fragment>
+    <Popup link={country.flags.svg} trigger={flagPopup} toggle={toggleFlag}/>
+    <Popup link={country.coatOfArms.svg} trigger={coaPopup} toggle={toggleCoa}/>
       <div className='z-0'>
         <Link to='/' className='w-full'>
           <div className='w-full flex justify-start p-5'>
@@ -52,15 +71,17 @@ export default function Details({ countries }) {
         <div className='flex flex-col items-center p-5 gap-4 text-gray-800 mb-24'>
           <div className='flex flex-wrap gap-6 justify-center'>
             <img
-              className='rounded-md shadow-md shadow-gray-700 max-h-40'
+              className='rounded-md shadow-md shadow-gray-700 max-h-40 cursor-pointer'
               src={country.flags.png}
               alt={"Flag of " + country.name.common}
+              onClick={toggleFlag}
             />
             <ReactImageFallback
               src={country.coatOfArms.png}
               fallbackImage={"nothing"}
               alt={"Coat of Arms of " + country.name.common}
-              className='max-h-40 mb-6'
+              className='max-h-40 mb-6 cursor-pointer'
+              onClick={toggleCoa}
             />
           </div>
 
