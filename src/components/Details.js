@@ -50,18 +50,17 @@ export default function Details({ countries }) {
       </Link>
       <div className='flex flex-col items-center p-5 gap-4 text-gray-800 mb-24'>
         <div className='flex flex-wrap gap-6 justify-center'>
-            <img
-              className='rounded-md shadow-md shadow-gray-700 max-h-40'
-              src={country.flags.png}
-              alt={"Flag of " + country.name.common}
-            />
+          <img
+            className='rounded-md shadow-md shadow-gray-700 max-h-40'
+            src={country.flags.png}
+            alt={"Flag of " + country.name.common}
+          />
           <ReactImageFallback
             src={country.coatOfArms.png}
-            fallbackImage={'nothing'}
+            fallbackImage={"nothing"}
             alt={"Coat of Arms of " + country.name.common}
             className='max-h-40 mb-6'
           />
-          
         </div>
 
         <p className='font-bold text-4xl lg:text-5xl'>{country.name.common}</p>

@@ -45,29 +45,41 @@ function App() {
       );
     }
 
-    if(terms.searchTerm) {
+    if (terms.searchTerm) {
       setSelectedCountries((prevCountries) =>
-        prevCountries.filter((country) => 
-          country.name.common
-            .toLowerCase()
-            .startsWith(terms.searchTerm.toLowerCase().trim()) ||
-
+        prevCountries.filter(
+          (country) =>
             country.name.common
-            .toLowerCase()
-            .includes(terms.searchTerm.toLowerCase().trim())
+              .toLowerCase()
+              .startsWith(terms.searchTerm.toLowerCase().trim()) ||
+            country.name.common
+              .toLowerCase()
+              .includes(terms.searchTerm.toLowerCase().trim())
         )
       );
     }
-    
   }, [terms]);
 
   return (
     <div className='flex flex-col items-center bg-gray-300 min-h-screen font-jost relative'>
       <Header />
       <Routes>
-        <Route exact path="/" element={<Home countries={selectedCountries} handleChange={handleChange} terms={terms}/>} />
-        <Route path="/:countryCode" element={<Details countries={allCountries}/>} />
-        {/* set up path for each detail page later */} 
+        <Route
+          exact
+          path='/'
+          element={
+            <Home
+              countries={selectedCountries}
+              handleChange={handleChange}
+              terms={terms}
+            />
+          }
+        />
+        <Route
+          path='/:countryCode'
+          element={<Details countries={allCountries} />}
+        />
+        {/* set up path for each detail page later */}
       </Routes>
       <Footer />
     </div>
