@@ -57,7 +57,7 @@ function App() {
   }, [terms]);
 
   return (
-    <div className='flex flex-col items-center bg-gray-300 min-h-screen font-jost'>
+    <div className='flex flex-col items-center bg-gray-300 min-h-screen font-jost relative'>
       <Header />
       <Routes>
         <Route exact path="/" element={<Home countries={selectedCountries} handleChange={handleChange} terms={terms}/>} />

@@ -16,7 +16,7 @@ export default function Home({countries, handleChange, terms}) {
 
 
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className="w-full flex flex-col items-center mb-24">
       <div className='w-full flex justify-between p-2 sm:p-4 lg:px-20'>
         <div className="relative">
         <FontAwesomeIcon icon={faSearch} className="text-gray-400 absolute top-2 left-1 pb-1 sm:text-xl sm:top-3 sm:left-3"/>
