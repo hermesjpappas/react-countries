@@ -34,6 +34,8 @@ function App() {
   }
 
   useEffect(() => {
+    //if there is a region selection, limit it to that
+
     if (terms.regionSelection === "all") {
       setSelectedCountries(allCountries);
     } else {
@@ -45,17 +47,25 @@ function App() {
       );
     }
 
+    //system where only the beginnings of parts of the name are tested
+    //so that we don't type in "ge" and get "Algeria", but rather we
+    //type in "con" and get "DR Congo"
+
     if (terms.searchTerm) {
       setSelectedCountries((prevCountries) =>
-        prevCountries.filter(
-          (country) =>
-            country.name.common
-              .toLowerCase()
-              .startsWith(terms.searchTerm.toLowerCase().trim()) ||
-            country.name.common
-              .toLowerCase()
-              .includes(terms.searchTerm.toLowerCase().trim())
-        )
+        prevCountries.filter((country) => {
+          const parts = country.name.common.split(" ");
+          for (let part of parts) {
+            if (
+              part
+                .toLowerCase()
+                .startsWith(terms.searchTerm.toLowerCase().trim())
+            ) {
+              return true;
+            }
+          }
+          return false;
+        })
       );
     }
   }, [terms]);
@@ -79,7 +89,6 @@ function App() {
           path='/:countryCode'
           element={<Details countries={allCountries} />}
         />
-        {/* set up path for each detail page later */}
       </Routes>
       <Footer />
     </div>
