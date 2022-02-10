@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
+import ReactImageFallback from "react-image-fallback";
+import notAvailable from '../images/not_available.png';
 
 export default function Details({ countries }) {
   //get the country code from the URL
@@ -7,7 +9,6 @@ export default function Details({ countries }) {
 
   //use the country code to get the right object to display from state
   const country = countries.find((country) => country.cca3 === countryCode);
-
 
   //basically all these conditionals are because Antarctica
   //doesn't have some of these values
@@ -57,12 +58,13 @@ export default function Details({ countries }) {
               alt={"Flag of " + country.name.common}
             />
           </a>
-          <a href={country.coatOfArms.svg} target='_blank'>
-            <img className='max-h-40 mb-6' 
+          <ReactImageFallback
             src={country.coatOfArms.png}
+            fallbackImage={'nothing'}
             alt={"Coat of Arms of " + country.name.common}
-            />
-          </a>
+            className='max-h-40 mb-6'
+          />
+          
         </div>
 
         <p className='font-bold text-4xl lg:text-5xl'>{country.name.common}</p>
@@ -137,20 +139,28 @@ export default function Details({ countries }) {
           </p>
           <p className='font-bold mt-6 self-center'>Borders with: </p>
         </div>
-        <div className="flex flex-wrap justify-center gap-4 w-40 sm:w-full">
-          {country.borders ? 
-            country.borders.map(code => {
-              const linkCountry = countries.find(country => country.cca3 === code);
-              return (
-                <Link key={code} to={"/" + code} className="flex flex-col items-center gap-2">
-                 <img src={linkCountry.flags.png} className="max-h-20 rounded-md" 
-                   alt={"Flag of " + linkCountry.name.common}
-                 />
-                  <p className="font-bold">{linkCountry.name.common}</p>
-                </Link>
-              )
-            }) : "None"
-          }
+        <div className='flex flex-wrap justify-center gap-4 w-40 sm:w-full'>
+          {country.borders
+            ? country.borders.map((code) => {
+                const linkCountry = countries.find(
+                  (country) => country.cca3 === code
+                );
+                return (
+                  <Link
+                    key={code}
+                    to={"/" + code}
+                    className='flex flex-col items-center gap-2'
+                  >
+                    <img
+                      src={linkCountry.flags.png}
+                      className='max-h-20 rounded-md'
+                      alt={"Flag of " + linkCountry.name.common}
+                    />
+                    <p className='font-bold'>{linkCountry.name.common}</p>
+                  </Link>
+                );
+              })
+            : "None"}
         </div>
       </div>
     </React.Fragment>

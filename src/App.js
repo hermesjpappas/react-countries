@@ -3,6 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Details from "./components/Details";
+import Footer from "./components/Footer";
 
 function App() {
   const [allCountries, setAllCountries] = useState([]);
@@ -63,6 +64,7 @@ function App() {
         <Route path="/:countryCode" element={<Details countries={allCountries}/>} />
         {/* set up path for each detail page later */} 
       </Routes>
+      <Footer />
     </div>
   );
 }
