@@ -47,13 +47,18 @@ function App() {
 
     if(terms.searchTerm) {
       setSelectedCountries((prevCountries) =>
-        prevCountries.filter((country) =>
+        prevCountries.filter((country) => 
           country.name.common
             .toLowerCase()
-            .startsWith(terms.searchTerm.toLowerCase().trim())
+            .startsWith(terms.searchTerm.toLowerCase().trim()) ||
+
+            country.name.common
+            .toLowerCase()
+            .includes(terms.searchTerm.toLowerCase().trim())
         )
       );
     }
+    
   }, [terms]);
 
   return (
