@@ -150,7 +150,7 @@ export default function Details({ countries }) {
                   >
                     <img
                       src={linkCountry.flags.png}
-                      className='max-h-20 rounded-md'
+                      className='max-h-20 rounded-md shadow-md shadow-gray-700'
                       alt={"Flag of " + linkCountry.name.common}
                     />
                     <p className='font-bold'>{linkCountry.name.common}</p>
