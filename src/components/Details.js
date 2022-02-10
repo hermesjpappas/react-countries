@@ -54,10 +54,14 @@ export default function Details({ countries }) {
             <img
               className='rounded-md shadow-md shadow-gray-700 max-h-40'
               src={country.flags.png}
+              alt={"Flag of " + country.name.common}
             />
           </a>
           <a href={country.coatOfArms.svg} target='_blank'>
-            <img className='max-h-40 mb-6' src={country.coatOfArms.png} />
+            <img className='max-h-40 mb-6' 
+            src={country.coatOfArms.png}
+            alt={"Coat of Arms of " + country.name.common}
+            />
           </a>
         </div>
 
@@ -139,7 +143,9 @@ export default function Details({ countries }) {
               const linkCountry = countries.find(country => country.cca3 === code);
               return (
                 <Link key={code} to={"/" + code} className="flex flex-col items-center gap-2">
-                 <img src={linkCountry.flags.png} className="max-h-20 rounded-md"/>
+                 <img src={linkCountry.flags.png} className="max-h-20 rounded-md" 
+                   alt={"Flag of " + linkCountry.name.common}
+                 />
                   <p className="font-bold">{linkCountry.name.common}</p>
                 </Link>
               )
