@@ -5,14 +5,14 @@
 
 @font-face {
   font-family: 'Jost';
-  src: url('./fonts/Jost-VariableFont_wght.ttf');
-  font-weight: normal;
+  src: url('./fonts/Jost-VariableFont_wght.ttf') format("truetype");
+  font-weight: auto;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Jost';
-  src: url('./fonts/Jost-Italic-VariableFont_wght.ttf');
-  font-weight: normal;
+  src: url('./fonts/Jost-Italic-VariableFont_wght.ttf') format("truetype");
+  font-weight: auto;
   font-style: italic;
 }
