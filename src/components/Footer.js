@@ -19,7 +19,6 @@ function Footer() {
         <a
           className=' text-white'
           href='https://restcountries.com/'
-          rel="noopener"
           target='_blank'
         >
           REST Countries API
