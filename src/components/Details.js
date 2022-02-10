@@ -50,13 +50,11 @@ export default function Details({ countries }) {
       </Link>
       <div className='flex flex-col items-center p-5 gap-4 text-gray-800'>
         <div className='flex flex-wrap gap-6 justify-center'>
-          <a href={country.flags.svg} target='_blank'>
             <img
               className='rounded-md shadow-md shadow-gray-700 max-h-40'
               src={country.flags.png}
               alt={"Flag of " + country.name.common}
             />
-          </a>
           <ReactImageFallback
             src={country.coatOfArms.png}
             fallbackImage={'nothing'}
