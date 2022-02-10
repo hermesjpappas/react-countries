@@ -1,0 +1,10 @@
+{
+  "short_name": "Countries App",
+  "name": "Around The World - A Country Database",
+  "icons": [
+
+  ],
+  "start_url": ".",
+  "display": "standalone"
+  
+}
