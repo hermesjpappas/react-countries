@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactImageFallback from "react-image-fallback";
-import notAvailable from '../images/not_available.png';
 
 export default function Details({ countries }) {
   //get the country code from the URL
