@@ -4,7 +4,7 @@ import { useEffect } from 'react/cjs/react.development';
 export default function useDarkMode() {
  
   const [darkMode, setDarkMode] = useState(
-    () => localStorage.theme === "dark"
+    () => localStorage.theme === "dark" || false
   );
 
   const toggleDarkMode = () => {
