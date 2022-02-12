@@ -1,38 +1,31 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactImageFallback from "react-image-fallback";
-import Popup from './Popup';
-
-
-
+import Popup from "./Popup";
 
 export default function Details({ countries }) {
-
-
   const [flagPopup, setFlagPopup] = useState(false);
   const [coaPopup, setCoaPopup] = useState(false);
 
   function toggleFlag() {
-    setFlagPopup(prevStatus => {
-      if(prevStatus) {
-        document.body.classList.remove('overflow-hidden');
+    setFlagPopup((prevStatus) => {
+      if (prevStatus) {
+        document.body.classList.remove("overflow-hidden");
         return false;
-      }
-      else {
-        document.body.classList.add('overflow-hidden');
+      } else {
+        document.body.classList.add("overflow-hidden");
         return true;
       }
     });
   }
 
   function toggleCoa() {
-    setCoaPopup(prevStatus => {
-      if(prevStatus) {
-        document.body.classList.remove('overflow-hidden');
+    setCoaPopup((prevStatus) => {
+      if (prevStatus) {
+        document.body.classList.remove("overflow-hidden");
         return false;
-      }
-      else {
-        document.body.classList.add('overflow-hidden');
+      } else {
+        document.body.classList.add("overflow-hidden");
         return true;
       }
     });
@@ -76,8 +69,12 @@ export default function Details({ countries }) {
 
   return (
     <React.Fragment>
-    <Popup link={country.flags.svg} trigger={flagPopup} toggle={toggleFlag}/>
-    <Popup link={country.coatOfArms.svg} trigger={coaPopup} toggle={toggleCoa}/>
+      <Popup link={country.flags.svg} trigger={flagPopup} toggle={toggleFlag} />
+      <Popup
+        link={country.coatOfArms.svg}
+        trigger={coaPopup}
+        toggle={toggleCoa}
+      />
       <div className='z-0'>
         <Link to='/' className='w-full'>
           <div className='w-full flex justify-start p-5'>
@@ -168,11 +165,15 @@ export default function Details({ countries }) {
               {country.unMember ? "Yes" : "No"}
             </p>
             <p>
-              <span className='font-bold'>Currencies: </span>
+              <span className='font-bold'>
+                {currencyList.length > 1 ? "Currencies" : "Currency"}:{" "}
+              </span>
               {currencyList.join(", ")}
             </p>
             <p>
-              <span className='font-bold'>Languages: </span>
+              <span className='font-bold'>
+                {languageList.length > 1 ? "Languages" : "Language"}:{" "}
+              </span>
               {languageList.join(", ")}
             </p>
             <p className='font-bold mt-6 self-center'>Borders with: </p>
