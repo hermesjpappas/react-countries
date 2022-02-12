@@ -13,11 +13,29 @@ export default function Details({ countries }) {
   const [coaPopup, setCoaPopup] = useState(false);
 
   function toggleFlag() {
-    setFlagPopup(prevStatus => !prevStatus);
+    setFlagPopup(prevStatus => {
+      if(prevStatus) {
+        document.body.classList.remove('overflow-hidden');
+        return false;
+      }
+      else {
+        document.body.classList.add('overflow-hidden');
+        return true;
+      }
+    });
   }
 
   function toggleCoa() {
-    setCoaPopup(prevStatus => !prevStatus);
+    setCoaPopup(prevStatus => {
+      if(prevStatus) {
+        document.body.classList.remove('overflow-hidden');
+        return false;
+      }
+      else {
+        document.body.classList.add('overflow-hidden');
+        return true;
+      }
+    });
   }
 
   //get the country code from the URL
