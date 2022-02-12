@@ -5,7 +5,7 @@ import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 
 export default function Header() {
   return (
-    <div className='flex w-full items-center bg-white text-gray-700 p-3 shadow-lg lg:p-6'>
+    <div className='flex w-full items-center bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-300 p-3 shadow-lg lg:p-6'>
       {/* change above to flex justify-between when/if you put a dark mode button */}
       <Link to='/'>
         <div className='flex items-center justify-start gap-3'>

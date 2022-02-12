@@ -70,7 +70,7 @@ function App() {
   }, [terms]);
 
   return (
-    <div className='flex flex-col items-center bg-gray-300 min-h-screen font-jost relative'>
+    <div className='flex flex-col items-center bg-gray-300 dark:bg-gray-800 min-h-screen font-jost relative'>
       <Header />
       <Routes>
         <Route

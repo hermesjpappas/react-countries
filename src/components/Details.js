@@ -83,7 +83,7 @@ export default function Details({ countries }) {
             </button>
           </div>
         </Link>
-        <div className='flex flex-col items-center p-5 gap-4 text-gray-800 mb-24'>
+        <div className='flex flex-col items-center p-5 gap-4 text-gray-800 dark:text-gray-300 mb-24'>
           <div className='flex flex-wrap gap-6 justify-center'>
             <img
               className='rounded-md shadow-md shadow-gray-700 max-h-40 cursor-pointer'
