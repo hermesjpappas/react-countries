@@ -50,19 +50,18 @@ function App() {
     //system where only the beginnings of parts of the name are tested
     //so that we don't type in "ge" and get "Algeria", but rather we
     //type in "con" and get "DR Congo"
+    //we can also match the entire name with the first if statement
 
     if (terms.searchTerm) {
       setSelectedCountries((prevCountries) =>
         prevCountries.filter((country) => {
-          const parts = country.name.common.split(" ");
+          const name = country.name.common.toLowerCase();
+          const search = terms.searchTerm.toLowerCase().trim();
+
+          if(name.startsWith(search)) return true
+          const parts = name.split(" ");
           for (let part of parts) {
-            if (
-              part
-                .toLowerCase()
-                .startsWith(terms.searchTerm.toLowerCase().trim())
-            ) {
-              return true;
-            }
+            if (part.startsWith(search))  return true;
           }
           return false;
         })
