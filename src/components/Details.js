@@ -115,18 +115,14 @@ export default function Details({ countries }) {
               <span className='font-bold'>Official Name: </span>
               {country.name.official}
             </p>
-            <p>
-              <span className='font-bold'>
-                {country.name.nativeName &&
-                country.name.official !== nativeNames.official
-                  ? "Official Endonym: "
-                  : ""}
-              </span>
-              {country.name.nativeName &&
-              country.name.official !== nativeNames.official
-                ? nativeNames.official
-                : ""}
-            </p>
+            {
+              country.name.nativeName &&
+              country.name.official !== nativeNames.official ?
+              (<p>
+                <span className="font-bold">Official Endonym :</span> {nativeNames.official}
+              </p>) :
+              ""
+            }
             <p>
               <span className='font-bold'>Region: </span>
               {country.region}
