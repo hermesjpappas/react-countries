@@ -59,7 +59,7 @@ function App() {
       setSelectedCountries((prevCountries) =>
         prevCountries.filter((country) => {
           //filter out non-alphabetic characters in the name for easier search
-          const name = country.name.common.toLowerCase().replace(/[^a-zA-Z]+/g, " ");
+          const name = country.name.common.toLowerCase().replace(/[^a-z]+/g, " ");
           const search = terms.searchTerm.toLowerCase().trim();
 
           if (name.startsWith(search)) return true;
