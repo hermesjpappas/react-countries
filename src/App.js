@@ -59,6 +59,8 @@ function App() {
       setSelectedCountries((prevCountries) =>
         prevCountries.filter((country) => {
 
+          //TO-DO: Have a 'pure' and filtered name to match both?
+          
           //filter out parentheses, comma and dash characters in the name for easier search
           const name = country.name.common.toLowerCase().replace(/[\-\(\)\,]+/g, " ");
           const search = terms.searchTerm.toLowerCase().trim();
