@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home({ countries, handleChange, terms }) {
+
   //sort the countries by name
   countries.sort((a, b) => {
     let nameA = a.name.common.toUpperCase();
@@ -43,6 +44,9 @@ export default function Home({ countries, handleChange, terms }) {
           <option value='oceania'>Oceania</option>
         </select>
       </div>
+
+      {/* map the selected countries to individual Country components on the page */}
+      
       <div className='p-2 flex flex-wrap gap-6 justify-center text-xl md:text-3xl lg:text-6xl text-gray-400'>
         {countries.length >= 1
           ? countries.map((country) => {

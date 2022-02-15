@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 
 export default function useDarkMode() {
- 
+
+  //check if the theme is dark in local storage already
   const [darkMode, setDarkMode] = useState(
     () => localStorage.theme === "dark"
   );

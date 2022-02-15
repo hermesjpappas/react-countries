@@ -4,9 +4,14 @@ import ReactImageFallback from "react-image-fallback";
 import Popup from "./Popup";
 
 export default function Details({ countries }) {
+
   const [flagPopup, setFlagPopup] = useState(false);
   const [coaPopup, setCoaPopup] = useState(false);
 
+  //'overflow-hidden' in both hides the scroll bar of the normal page
+  //while the pop up is active, then it goes back to normal
+
+  //function to set the visibility of the pop up for the flag
   function toggleFlag() {
     setFlagPopup((prevStatus) => {
       if (prevStatus) {
@@ -19,6 +24,7 @@ export default function Details({ countries }) {
     });
   }
 
+  //function to set the visibility of the pop up for the coat of arms
   function toggleCoa() {
     setCoaPopup((prevStatus) => {
       if (prevStatus) {
@@ -67,6 +73,7 @@ export default function Details({ countries }) {
     });
   }
 
+  //use the country object to display the necessary data for this country
   return (
     <React.Fragment>
       <Popup link={country.flags.svg} trigger={flagPopup} toggle={toggleFlag} />

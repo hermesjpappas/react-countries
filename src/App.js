@@ -6,6 +6,7 @@ import Details from "./components/Details";
 import Footer from "./components/Footer";
 
 function App() {
+
   const [allCountries, setAllCountries] = useState([]);
   const [selectedCountries, setSelectedCountries] = useState([]);
   const [terms, setTerms] = useState({
@@ -13,6 +14,7 @@ function App() {
     regionSelection: "all",
   });
 
+  //get the data from the REST Countries API
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
       .then((response) => response.json())
@@ -32,6 +34,9 @@ function App() {
       };
     });
   }
+
+
+  //run this every time there is a change in the region or the search bar
 
   useEffect(() => {
     //if there is a region selection, limit it to that
@@ -73,6 +78,9 @@ function App() {
     <div className='flex flex-col items-center bg-gray-300 dark:bg-gray-800 min-h-screen font-jost relative'>
       <Header />
       <Routes>
+      
+        {/* we pass only the selected countries down to Home because we want
+          the displayed countries to change as we select a region or search */}
         <Route
           exact
           path='/'
@@ -84,6 +92,8 @@ function App() {
             />
           }
         />
+        {/* we pass all the countries to the details page because it needs 
+        to have the data for the countries it borders with */}
         <Route
           path='/:countryCode'
           element={<Details countries={allCountries} />}
