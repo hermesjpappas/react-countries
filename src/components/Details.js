@@ -83,8 +83,8 @@ export default function Details({ countries }) {
         toggle={toggleCoa}
       />
       <div className='z-0'>
-        <Link to='/' className='w-full'>
-          <div className='w-full flex justify-start p-5'>
+        <Link to='/' className='w-screen'>
+          <div className='w-screen flex justify-start p-5'>
             <button className='bg-gray-700 text-gray-300 px-6 py-2 rounded shadow-md shadow-gray-700 dark:shadow-black'>
               Home
             </button>
