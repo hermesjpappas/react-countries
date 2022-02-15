@@ -66,7 +66,11 @@ function App() {
           if(name.startsWith(search)) return true
           const parts = name.split(" ");
           for (let part of parts) {
-            if (part.startsWith(search))  return true;
+
+            //filter each part in case it contains non-alphabetical
+            //characters, like parentheses
+            const filtPart = part.replace(/[^a-zA-Z]+/g, '');
+            if (filtPart.startsWith(search))  return true;
           }
           return false;
         })
