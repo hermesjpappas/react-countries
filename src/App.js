@@ -6,7 +6,6 @@ import Details from "./components/Details";
 import Footer from "./components/Footer";
 
 function App() {
-
   const [allCountries, setAllCountries] = useState([]);
   const [selectedCountries, setSelectedCountries] = useState([]);
   const [terms, setTerms] = useState({
@@ -35,7 +34,6 @@ function App() {
     });
   }
 
-
   //run this every time there is a change in the region or the search bar
 
   useEffect(() => {
@@ -60,17 +58,15 @@ function App() {
     if (terms.searchTerm) {
       setSelectedCountries((prevCountries) =>
         prevCountries.filter((country) => {
-          const name = country.name.common.toLowerCase();
+          //filter out non-alphabetic characters in the name for easier search
+          const name = country.name.common.toLowerCase().replace(/[^a-zA-Z]+/g, " ");
           const search = terms.searchTerm.toLowerCase().trim();
 
-          if(name.startsWith(search)) return true
+          if (name.startsWith(search)) return true;
+
           const parts = name.split(" ");
           for (let part of parts) {
-
-            //filter each part in case it contains non-alphabetical
-            //characters, like parentheses
-            const filtPart = part.replace(/[^a-zA-Z]+/g, '');
-            if (filtPart.startsWith(search))  return true;
+            if (part.startsWith(search)) return true;
           }
           return false;
         })
@@ -82,7 +78,6 @@ function App() {
     <div className='flex flex-col items-center bg-gray-300 dark:bg-gray-800 min-h-screen font-jost relative'>
       <Header />
       <Routes>
-      
         {/* we pass only the selected countries down to Home because we want
           the displayed countries to change as we select a region or search */}
         <Route
