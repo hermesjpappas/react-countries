@@ -85,7 +85,7 @@ export default function Details({ countries }) {
       <div className='z-0'>
         <Link to='/' className='w-full'>
           <div className='w-full flex justify-start p-5'>
-            <button className='bg-gray-700 text-gray-300 px-6 py-2 rounded shadow-md shadow-gray-700'>
+            <button className='bg-gray-700 text-gray-300 px-6 py-2 rounded shadow-md shadow-gray-700 dark:shadow-black'>
               Home
             </button>
           </div>
@@ -93,7 +93,7 @@ export default function Details({ countries }) {
         <div className='flex flex-col items-center p-5 gap-4 text-gray-800 dark:text-gray-300 mb-24'>
           <div className='flex flex-wrap gap-6 justify-center'>
             <img
-              className='rounded-md shadow-md shadow-gray-700 max-h-40 cursor-pointer'
+              className='rounded-md shadow-md shadow-gray-700 dark:shadow-black max-h-40 cursor-pointer'
               src={country.flags.png}
               alt={"Flag of " + country.name.common}
               onClick={toggleFlag}
@@ -195,7 +195,7 @@ export default function Details({ countries }) {
                     >
                       <img
                         src={linkCountry.flags.png}
-                        className='max-h-20 rounded-md shadow-md shadow-gray-700'
+                        className='max-h-20 rounded-md shadow-md shadow-gray-700 dark:shadow-black'
                         alt={"Flag of " + linkCountry.name.common}
                       />
                       <p className='font-bold'>{linkCountry.name.common}</p>
