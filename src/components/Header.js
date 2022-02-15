@@ -6,6 +6,7 @@ import  useDarkMode  from '../useDarkMode';
 
 export default function Header() {
 
+  //use the dark mode custom hook
   const [darkMode, toggleDarkMode] = useDarkMode();
 
 
@@ -24,6 +25,9 @@ export default function Header() {
         </div>
       </Link>
 
+      {/* set the icon depending on its current theme and allow it 
+        to change the theme when clicked */}
+        
       <div className="pt-1 pr-1">
           <FontAwesomeIcon icon={darkMode ? faSun : faMoon} 
             className="text-lg md:text-xl lg:text-2xl cursor-pointer"
