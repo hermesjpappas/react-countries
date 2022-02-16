@@ -62,7 +62,7 @@ function App() {
           const name = country.name.common.toLowerCase();
           //filter out parentheses, comma and dash characters in the name for easier search
           const filtName = country.name.common.toLowerCase().replace(/[\-\(\)\,]+/g, " ").replace(/  +/g, ' ');
-          const search = terms.searchTerm.toLowerCase().trim().replace(/[\-\(\)\,]+/g, " ").replace(/  +/g, ' ');
+          const search = terms.searchTerm.toLowerCase().replace(/[\-\(\)\,]+/g, " ").replace(/  +/g, ' ').trim();
 
           if (name.startsWith(search)) return true;
           if (filtName.startsWith(search)) return true;
