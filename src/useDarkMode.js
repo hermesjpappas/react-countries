@@ -8,7 +8,7 @@ export default function useDarkMode() {
   );
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    setDarkMode(prevDarkMode => !prevDarkMode);
   };
 
   useEffect(() => {
