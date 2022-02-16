@@ -59,15 +59,15 @@ function App() {
       setSelectedCountries((prevCountries) =>
         prevCountries.filter((country) => {
 
-          //TO-DO: Have a 'pure' and filtered name to match both?
-          
+          const name = country.name.common.toLowerCase();
           //filter out parentheses, comma and dash characters in the name for easier search
-          const name = country.name.common.toLowerCase().replace(/[\-\(\)\,]+/g, " ");
-          const search = terms.searchTerm.toLowerCase().trim();
+          const filtName = country.name.common.toLowerCase().replace(/[\-\(\)\,]+/g, " ").replace(/  +/g, ' ');
+          const search = terms.searchTerm.toLowerCase().trim().replace(/  +/g, ' ');
 
           if (name.startsWith(search)) return true;
+          if (filtName.startsWith(search)) return true;
 
-          const parts = name.split(" ");
+          const parts = filtName.split(" ");
           for (let part of parts) {
             if (part.startsWith(search)) return true;
           }
