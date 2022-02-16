@@ -6,7 +6,7 @@ function Popup({link, trigger, toggle}) {
     onClick={toggle}>
       <div className="relative p-8 w-full max-w-6xl flex flex-col items-center gap-6 max-h-full">
           <button className='bg-gray-700 text-gray-300 px-6 py-2 rounded shadow-md shadow-gray-700 self-start'>Close</button>
-          <img src={link} />
+          <img src={link} alt="image of flag / coat of arms"/>
       </div>
     </div>
   ) : "";
