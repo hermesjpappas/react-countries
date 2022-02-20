@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactImageFallback from "react-image-fallback";
 import Popup from "./Popup";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWikipediaW } from "@fortawesome/free-brands-svg-icons";
+
 
 export default function Details({ countries }) {
 
@@ -107,8 +110,14 @@ export default function Details({ countries }) {
             />
           </div>
 
-          <p className='font-bold text-4xl lg:text-5xl'>
-            {country.name.common}
+          <p className='font-bold text-4xl lg:text-5xl flex gap-6 items-center'>
+            {country.name.common + " "} 
+            <a href={"https://en.wikipedia.org/wiki/" + country.name.common} target="_blank"
+            className="text-xl pt-1">
+              <div className="bg-gray-400 text-black p-2 rounded-full flex justify-center items-center">
+                <FontAwesomeIcon icon={faWikipediaW}/>
+              </div>
+            </a>
           </p>
 
           <p className='font-bold text-xl lg:text-2xl'>
