@@ -91,14 +91,16 @@ export default function Details({ countries }) {
         toggle={toggleCoa}
       />
       <div className='z-0'>
-        <Link to='/' className='w-screen'>
-          <div className='w-screen flex justify-start p-5'>
+        
+          <div className='w-[calc(100vw-1rem)] flex justify-start p-5'>
+          <Link to='/'>
             <button className='bg-gray-700 text-gray-300 px-6 py-2 rounded shadow-md shadow-gray-700 dark:shadow-black'>
               Home
             </button>
+            </Link>
           </div>
-        </Link>
-        <div className='flex flex-col items-center p-5 gap-4 text-gray-800 dark:text-gray-300 mb-24'>
+        
+        <div className='w-[calc(100vw-1rem)] flex flex-col items-center p-5 gap-4 text-gray-800 dark:text-gray-300 mb-24'>
           <div className='flex flex-wrap gap-6 justify-center'>
             <img
               className='rounded-md shadow-md shadow-gray-700 dark:shadow-black max-h-40 cursor-pointer'
@@ -187,7 +189,7 @@ export default function Details({ countries }) {
               </span>
               {currencyList.join(", ")}
             </p>
-            <p>
+            <p className="mb-6">
               <span className='font-bold'>
                 {languageList.length > 1 ? "Languages" : "Language"}:{" "}
               </span>
