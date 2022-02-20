@@ -6,8 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWikipediaW } from "@fortawesome/free-brands-svg-icons";
 
 
+
 export default function Details({ countries }) {
 
+  
   const [flagPopup, setFlagPopup] = useState(false);
   const [coaPopup, setCoaPopup] = useState(false);
 
@@ -45,6 +47,7 @@ export default function Details({ countries }) {
 
   //use the country code to get the right object to display from state
   const country = countries.find((country) => country.cca3 === countryCode);
+
 
   //basically all these conditionals are because Antarctica
   //doesn't have some of these values
@@ -188,6 +191,7 @@ export default function Details({ countries }) {
               </span>
               {languageList.join(", ")}
             </p>
+
             <p className='font-bold mt-6 self-center'>Borders with: </p>
           </div>
           <div className='flex flex-wrap justify-center gap-4 w-40 sm:w-full'>
