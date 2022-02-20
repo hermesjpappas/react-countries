@@ -4,13 +4,10 @@ import ReactImageFallback from "react-image-fallback";
 import Popup from "./Popup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWikipediaW } from "@fortawesome/free-brands-svg-icons";
-import {MapContainer, TileLayer} from 'react-leaflet';
+import { MapContainer, TileLayer } from "react-leaflet";
 import { map } from "leaflet";
 
-
-
 export default function Details({ countries }) {
-
   const [flagPopup, setFlagPopup] = useState(false);
   const [coaPopup, setCoaPopup] = useState(false);
 
@@ -46,10 +43,8 @@ export default function Details({ countries }) {
   //get the country code from the URL
   const { countryCode } = useParams();
 
-
   //use the country code to get the right object to display from state
   const country = countries.find((country) => country.cca3 === countryCode);
-
 
   //basically all these conditionals are because Antarctica
   //doesn't have some of these values
@@ -91,16 +86,15 @@ export default function Details({ countries }) {
         toggle={toggleCoa}
       />
       <div className='z-0'>
-        
-          <div className='w-[calc(100vw-1rem)] flex justify-start p-5'>
+        <div className='w-[calc(100vw-1rem)] flex justify-start p-5'>
           <Link to='/'>
             <button className='bg-gray-700 text-gray-300 px-6 py-2 rounded shadow-md shadow-gray-700 dark:shadow-black'>
               Home
             </button>
-            </Link>
-          </div>
-        
-        <div className='w-[calc(100vw-1rem)] flex flex-col items-center p-5 gap-4 text-gray-800 dark:text-gray-300 mb-24'>
+          </Link>
+        </div>
+
+        <div className='w-[calc(100vw-1rem)] flex flex-col items-center p-5 gap-4 text-gray-800 dark:text-gray-300'>
           <div className='flex flex-wrap gap-6 justify-center'>
             <img
               className='rounded-md shadow-md shadow-gray-700 dark:shadow-black max-h-40 cursor-pointer'
@@ -118,11 +112,14 @@ export default function Details({ countries }) {
           </div>
 
           <p className='font-bold text-4xl lg:text-5xl flex gap-6 items-center'>
-            {country.name.common + " "} 
-            <a href={"https://en.wikipedia.org/wiki/" + country.name.common} target="_blank"
-            className="text-xl pt-1">
-              <span className="bg-gray-400 text-black p-2 rounded-full flex justify-center items-center">
-                <FontAwesomeIcon icon={faWikipediaW}/>
+            {country.name.common + " "}
+            <a
+              href={"https://en.wikipedia.org/wiki/" + country.name.common}
+              target='_blank'
+              className='text-xl pt-1'
+            >
+              <span className='bg-gray-400 text-black p-2 rounded-full flex justify-center items-center'>
+                <FontAwesomeIcon icon={faWikipediaW} />
               </span>
             </a>
           </p>
@@ -138,14 +135,15 @@ export default function Details({ countries }) {
               <span className='font-bold'>Official Name: </span>
               {country.name.official}
             </p>
-            {
-              country.name.nativeName &&
-              country.name.official !== nativeNames.official ?
-              (<p>
-                <span className="font-bold">Official Endonym :</span> {nativeNames.official}
-              </p>) :
+            {country.name.nativeName &&
+            country.name.official !== nativeNames.official ? (
+              <p>
+                <span className='font-bold'>Official Endonym :</span>{" "}
+                {nativeNames.official}
+              </p>
+            ) : (
               ""
-            }
+            )}
             <p>
               <span className='font-bold'>Region: </span>
               {country.region}
@@ -189,25 +187,30 @@ export default function Details({ countries }) {
               </span>
               {currencyList.join(", ")}
             </p>
-            <p className="mb-6">
+            <p className='mb-6'>
               <span className='font-bold'>
                 {languageList.length > 1 ? "Languages" : "Language"}:{" "}
               </span>
               {languageList.join(", ")}
             </p>
-
-                  <MapContainer 
-                  //need to have the key change so the map re-renders!
-                  key={country.latlng[0] + country.latlng[1] + countryCode}
-                  center={[country.latlng[0], country.latlng[1]]}
-                  zoom={6}>
-                    <TileLayer
-                    url="https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=dPukck0BML48sLppR0aY"
-                    attribution="Provided by <a href='https://cloud.maptiler.com/'>MapTiler</a>"></TileLayer>
-                  </MapContainer>
-
-            <p className='font-bold mt-6 self-center'>Borders with: </p>
           </div>
+           <MapContainer
+            //need to have the key change so the map re-renders!
+            key={country.latlng[0] + country.latlng[1] + countryCode}
+            center={[country.latlng[0], country.latlng[1]]}
+            zoom={6}
+          >
+            <TileLayer
+              url='https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=dPukck0BML48sLppR0aY'
+              attribution="Provided by <a href='https://cloud.maptiler.com/'>MapTiler</a>"
+            ></TileLayer>
+          </MapContainer>
+
+        </div>
+
+           
+        <div className='w-[calc(100vw-1rem)] flex flex-col items-center p-5 gap-4 text-gray-800 dark:text-gray-300 mb-24'>
+         <p className='font-bold mt-6 self-center'>Borders with: </p>
           <div className='flex flex-wrap justify-center gap-4 w-40 sm:w-full'>
             {country.borders
               ? country.borders.map((code) => {
