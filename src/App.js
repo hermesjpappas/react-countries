@@ -12,7 +12,7 @@ function App() {
     searchTerm: "",
     regionSelection: "all",
   });
-
+  
   //get the data from the REST Countries API
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
@@ -98,7 +98,9 @@ function App() {
         to have the data for the countries it borders with */}
         <Route
           path='/:countryCode'
-          element={<Details countries={allCountries} />}
+          element={<Details 
+                    countries={allCountries}
+                     />}
         />
       </Routes>
       <Footer />

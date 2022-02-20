@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactImageFallback from "react-image-fallback";
 import Popup from "./Popup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWikipediaW } from "@fortawesome/free-brands-svg-icons";
 import {MapContainer, TileLayer} from 'react-leaflet';
+import { map } from "leaflet";
 
 
 
 export default function Details({ countries }) {
 
-  
   const [flagPopup, setFlagPopup] = useState(false);
   const [coaPopup, setCoaPopup] = useState(false);
 
@@ -46,8 +46,10 @@ export default function Details({ countries }) {
   //get the country code from the URL
   const { countryCode } = useParams();
 
+
   //use the country code to get the right object to display from state
   const country = countries.find((country) => country.cca3 === countryCode);
+
 
   //basically all these conditionals are because Antarctica
   //doesn't have some of these values
@@ -117,9 +119,9 @@ export default function Details({ countries }) {
             {country.name.common + " "} 
             <a href={"https://en.wikipedia.org/wiki/" + country.name.common} target="_blank"
             className="text-xl pt-1">
-              <div className="bg-gray-400 text-black p-2 rounded-full flex justify-center items-center">
+              <span className="bg-gray-400 text-black p-2 rounded-full flex justify-center items-center">
                 <FontAwesomeIcon icon={faWikipediaW}/>
-              </div>
+              </span>
             </a>
           </p>
 
@@ -192,7 +194,10 @@ export default function Details({ countries }) {
               {languageList.join(", ")}
             </p>
 
-                  <MapContainer center={[country.latlng[0], country.latlng[1]]}
+                  <MapContainer 
+                  //need to have the key change so the map re-renders!
+                  key={country.latlng[0] + country.latlng[1] + countryCode}
+                  center={[country.latlng[0], country.latlng[1]]}
                   zoom={6}>
                     <TileLayer
                     url="https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=dPukck0BML48sLppR0aY"
