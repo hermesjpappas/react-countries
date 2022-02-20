@@ -60,22 +60,37 @@ function App() {
       setSelectedCountries((prevCountries) =>
         prevCountries.filter((country) => {
           const name = country.name.common.toLowerCase();
-          //filter out parentheses, comma and dash characters in the name for easier search
+
+          //filter out parentheses, comma, dash and diacritics in the name for easier search
           const filtName = country.name.common
             .toLowerCase()
             .replace(/[\-\(\)\,]+/g, " ")
-            .replace(/  +/g, " ");
+            .replace(/  +/g, " ")
+            .normalize("NFD")
+            .replace(/\p{Diacritic}/gu, "");
+            
           const search = terms.searchTerm
             .toLowerCase()
             .replace(/[\-\(\)\,]+/g, " ")
             .replace(/  +/g, " ")
             .trim();
 
+          //check against the entire thing first
           if (name.startsWith(search)) return true;
           if (filtName.startsWith(search)) return true;
 
-          const parts = filtName.split(" ");
-          for (let part of parts) {
+          //check against its parts, first "pure" ones
+          const pureParts = name
+            .replace(/[\-\(\)\,]+/g, " ")
+            .replace(/  +/g, " ")
+            .split(" ");
+          for (let part of pureParts) {
+            if (part.startsWith(search)) return true;
+          }
+
+          //then filtered from diacritics
+          const filtParts = filtName.split(" ");
+          for (let part of filtParts) {
             if (part.startsWith(search)) return true;
           }
           return false;
