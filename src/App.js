@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Details from "./components/Details";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [allCountries, setAllCountries] = useState([]);
@@ -12,7 +13,7 @@ function App() {
     searchTerm: "",
     regionSelection: "all",
   });
-  
+
   //get the data from the REST Countries API
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
@@ -58,11 +59,17 @@ function App() {
     if (terms.searchTerm) {
       setSelectedCountries((prevCountries) =>
         prevCountries.filter((country) => {
-
           const name = country.name.common.toLowerCase();
           //filter out parentheses, comma and dash characters in the name for easier search
-          const filtName = country.name.common.toLowerCase().replace(/[\-\(\)\,]+/g, " ").replace(/  +/g, ' ');
-          const search = terms.searchTerm.toLowerCase().replace(/[\-\(\)\,]+/g, " ").replace(/  +/g, ' ').trim();
+          const filtName = country.name.common
+            .toLowerCase()
+            .replace(/[\-\(\)\,]+/g, " ")
+            .replace(/  +/g, " ");
+          const search = terms.searchTerm
+            .toLowerCase()
+            .replace(/[\-\(\)\,]+/g, " ")
+            .replace(/  +/g, " ")
+            .trim();
 
           if (name.startsWith(search)) return true;
           if (filtName.startsWith(search)) return true;
@@ -80,29 +87,30 @@ function App() {
   return (
     <div className='flex flex-col items-center bg-gray-300 dark:bg-gray-800 min-h-screen font-jost relative'>
       <Header />
-      <Routes>
-        {/* we pass only the selected countries down to Home because we want
+      <ScrollToTop>
+        <Routes>
+          {/* we pass only the selected countries down to Home because we want
           the displayed countries to change as we select a region or search */}
-        <Route
-          exact
-          path='/'
-          element={
-            <Home
-              countries={selectedCountries}
-              handleChange={handleChange}
-              terms={terms}
-            />
-          }
-        />
-        {/* we pass all the countries to the details page because it needs 
-        to have the data for the countries it borders with */}
-        <Route
-          path='/:countryCode'
-          element={<Details 
-                    countries={allCountries}
-                     />}
-        />
-      </Routes>
+
+          <Route
+            exact
+            path='/'
+            element={
+              <Home
+                countries={selectedCountries}
+                handleChange={handleChange}
+                terms={terms}
+              />
+            }
+          />
+          {/* we pass all the countries to the details page because it needs
+          to have the data for the countries it borders with */}
+          <Route
+            path='/:countryCode'
+            element={<Details countries={allCountries} />}
+          />
+        </Routes>
+      </ScrollToTop>
       <Footer />
     </div>
   );
