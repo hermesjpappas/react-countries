@@ -4,6 +4,7 @@ import ReactImageFallback from "react-image-fallback";
 import Popup from "./Popup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWikipediaW } from "@fortawesome/free-brands-svg-icons";
+import {MapContainer, TileLayer} from 'react-leaflet';
 
 
 
@@ -47,7 +48,6 @@ export default function Details({ countries }) {
 
   //use the country code to get the right object to display from state
   const country = countries.find((country) => country.cca3 === countryCode);
-
 
   //basically all these conditionals are because Antarctica
   //doesn't have some of these values
@@ -191,6 +191,13 @@ export default function Details({ countries }) {
               </span>
               {languageList.join(", ")}
             </p>
+
+                  <MapContainer center={[country.latlng[0], country.latlng[1]]}
+                  zoom={6}>
+                    <TileLayer
+                    url="https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=dPukck0BML48sLppR0aY"
+                    attribution="Provided by <a href='https://cloud.maptiler.com/'>MapTiler</a>"></TileLayer>
+                  </MapContainer>
 
             <p className='font-bold mt-6 self-center'>Borders with: </p>
           </div>
