@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactImageFallback from "react-image-fallback";
 import Popup from "./Popup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWikipediaW } from "@fortawesome/free-brands-svg-icons";
 import { MapContainer, TileLayer } from "react-leaflet";
-import { map } from "leaflet";
+
 
 export default function Details({ countries }) {
   const [flagPopup, setFlagPopup] = useState(false);
