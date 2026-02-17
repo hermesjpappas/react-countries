@@ -16,18 +16,18 @@ function App() {
 
   //get the data from the REST Countries API
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((response) => response.json())
-      .then((data) => {
+    fetch("https://restcountries.com/v3.1/all?fields=name,flags,cca3,latlng,region,subregion,capital,borders,population")
+      .then(response => response.json())
+      .then(data => {
         setAllCountries(data);
         setSelectedCountries(data);
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   }, []);
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setTerms((prevTerms) => {
+    setTerms(prevTerms => {
       return {
         ...prevTerms,
         [name]: value,
@@ -44,10 +44,7 @@ function App() {
       setSelectedCountries(allCountries);
     } else {
       setSelectedCountries(
-        allCountries.filter(
-          (country) =>
-            country.region.toLowerCase() === terms.regionSelection.toLowerCase()
-        )
+        allCountries.filter(country => country.region.toLowerCase() === terms.regionSelection.toLowerCase())
       );
     }
 
@@ -57,8 +54,8 @@ function App() {
     //we can also match the entire name with the first if statement
 
     if (terms.searchTerm) {
-      setSelectedCountries((prevCountries) =>
-        prevCountries.filter((country) => {
+      setSelectedCountries(prevCountries =>
+        prevCountries.filter(country => {
           const name = country.name.common.toLowerCase();
 
           //filter out parentheses, comma, dash and diacritics in the name for easier search
@@ -68,7 +65,7 @@ function App() {
             .replace(/  +/g, " ")
             .normalize("NFD")
             .replace(/\p{Diacritic}/gu, "");
-            
+
           const search = terms.searchTerm
             .toLowerCase()
             .replace(/[\-\(\)\,]+/g, " ")
@@ -100,7 +97,7 @@ function App() {
   }, [terms]);
 
   return (
-    <div className='flex flex-col items-center bg-gray-300 dark:bg-gray-800 min-h-screen font-jost relative'>
+    <div className="relative flex flex-col items-center min-h-screen bg-gray-300 dark:bg-gray-800 font-jost">
       <Header />
       <ScrollToTop>
         <Routes>
@@ -109,7 +106,7 @@ function App() {
 
           <Route
             exact
-            path='/'
+            path="/"
             element={
               <Home
                 countries={selectedCountries}
@@ -121,7 +118,7 @@ function App() {
           {/* we pass all the countries to the details page because it needs
           to have the data for the countries it borders with */}
           <Route
-            path='/:countryCode'
+            path="/:countryCode"
             element={<Details countries={allCountries} />}
           />
         </Routes>
