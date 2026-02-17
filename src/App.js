@@ -16,7 +16,7 @@ function App() {
 
   //get the data from the REST Countries API
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all?fields=name,flags,cca3,latlng,region,subregion,capital,borders,population")
+    fetch("https://restcountries.com/v3.1/all?fields=name,flags,cca3,latlng,region,subregion,capital,borders,population,languages")
       .then(response => response.json())
       .then(data => {
         setAllCountries(data);

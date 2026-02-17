@@ -169,35 +169,8 @@ export default function Details({ countries = [] }) {
             </p>
 
             <p>
-              <span className="font-bold">Landlocked: </span>
-              {country.landlocked ? "Yes" : "No"}
-            </p>
-
-            <p>
               <span className="font-bold">Population: </span>
               {country.population?.toLocaleString() || "Unknown"}
-            </p>
-
-            <p>
-              <span className="font-bold">Independent: </span>
-              {country.independent ? "Yes" : "No"}
-            </p>
-
-            <p>
-              <span className="font-bold">Status: </span>
-              {country.status || "Unknown"}
-            </p>
-
-            <p>
-              <span className="font-bold">UN Member: </span>
-              {country.unMember ? "Yes" : "No"}
-            </p>
-
-            <p>
-              <span className="font-bold">
-                {currencyList.length > 1 ? "Currencies" : "Currency"}:{" "}
-              </span>
-              {currencyList.join(", ")}
             </p>
 
             <p className="mb-6">
