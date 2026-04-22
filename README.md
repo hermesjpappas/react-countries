@@ -17,3 +17,4 @@ any of the flags of the countries it borders with and go to their details, like 
 <a href="https://hjp-world.netlify.app" target="_blank">Try it out!</a>
 
 Notes: Should be responsive from any width of 280px and above.
+
